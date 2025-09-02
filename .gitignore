@@ -78,3 +78,10 @@ cmake-build-*/
 
 # ctags file
 .tags
+
+# data and outputs
+data/
+viz/
+viz_*
+out/
+*.png

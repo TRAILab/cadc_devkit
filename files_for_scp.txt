@@ -1,0 +1,10 @@
+/home/trail/workspace/cadc_devkit/data/cadcd/cadc_coco_2d_ann_all_crop.json
+/home/trail/workspace/cadc_devkit/data/cadcd/cadc_coco_2d_ann_all.json
+/home/trail/workspace/cadc_devkit/data/cadcd/cadc_coco_2d_ann_stats_crop.txt
+/home/trail/workspace/cadc_devkit/data/cadcd/cadc_coco_2d_ann_stats.txt
+/home/trail/workspace/cadc_devkit/data/cadcd/cadc_coco_2d_ann_train_crop.json
+/home/trail/workspace/cadc_devkit/data/cadcd/cadc_coco_2d_ann_train.json
+/home/trail/workspace/cadc_devkit/data/cadcd/cadc_coco_2d_ann_val_crop.json
+/home/trail/workspace/cadc_devkit/data/cadcd/cadc_coco_2d_ann_val.json
+/home/trail/workspace/cadc_devkit/data/cadcd/cadc_trainval_split_crop.json
+/home/trail/workspace/cadc_devkit/data/cadcd/cadc_trainval_split.json

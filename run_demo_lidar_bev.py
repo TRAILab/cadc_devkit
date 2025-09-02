@@ -5,28 +5,19 @@ import json
 import matplotlib.patches as patches
 
 
-frame = 12
-cam = '0'
-seq = '0033'
+frame = 0
+seq = '0008'
+date = '2018_03_06'
 DISTORTED = False
 MOVE_FORWARD = True
 DISPLAY_LIDAR = False
 DISPLAY_CUBOID_CENTER = False
 MIN_CUBOID_DIST = 40.0
+BASE = '/home/trail/workspace/cadc_devkit/data/cadcd/' + date + '/'
 
-BASE = '/media/matthew/WAVELAB_2TB/winter/data/'
-# BASE = '/media/matthew/MOOSE-4TB/2019_02_27/'
-# BASE = '/media/matthew/MOOSE-4TB/2018_03_06/data/'
-# BASE = '/media/matthew/MOOSE-4TB/2018_03_07/data/'
-
-if DISTORTED:
-  path_type = 'raw'
-else:
-  path_type = 'processed'
-
+path_type = 'labeled'
 lidar_path = BASE + seq + "/" + path_type + "/lidar_points/data/" + format(frame, '010') + ".bin";
 calib_path = "/media/matthew/WAVELAB_2TB/winter/calib/";
-img_path =  BASE + seq + "/" + path_type + "/image_0" + cam + "/data/" + format(frame, '010') + ".png";
 annotations_path =  BASE + seq + "/3d_ann.json";
 
 def bev(s1,s2,f1,f2,frame,lidar_path,annotations_path):
@@ -230,6 +221,6 @@ def bev(s1,s2,f1,f2,frame,lidar_path,annotations_path):
     ax.yaxis.set_visible(False)  # Do not draw axis tick marks
     plt.xlim([0, x_max])
     plt.ylim([0, y_max])  
-    fig.savefig("/home/matthew/Desktop/bev_" + str(frame) + ".png", dpi=dpi, bbox_inches='tight', pad_inches=0.0)
+    fig.savefig("bev_" + str(frame) + ".png", dpi=dpi, bbox_inches='tight', pad_inches=0.0)
 
 bev(50,50,50,50,frame,lidar_path,annotations_path)

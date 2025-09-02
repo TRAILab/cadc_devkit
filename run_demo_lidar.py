@@ -5,21 +5,17 @@ import cv2
 import load_calibration
 from lidar_utils import lidar_utils
 
-frame = 90
+frame = 57
 cam = '0'
-seq = '0027'
+seq = '0004'
 DISTORTED = False
-MOVE_FORWARD = True
-BASE = "/media/matthew/WAVELAB_2TB/winter/"
+MOVE_FORWARD = False
+BASE = "/home/trail/workspace/cadc_devkit/data/cadcd/2019_02_27/"
+path_type = 'labeled'
 
-if DISTORTED:
-  path_type = 'raw'
-else:
-  path_type = 'processed'
-
-lidar_path = BASE + "data/" + seq + "/" + path_type + "/lidar_points/data/" + format(frame, '010') + ".bin";
+lidar_path = BASE + seq + "/" + path_type + "/lidar_points/data/" + format(frame, '010') + ".bin";
 calib_path = BASE + "calib/";
-img_path = BASE + "data/" + seq + "/" + path_type + "/image_0" + cam + "/data/" + format(frame, '010') + ".png";
+img_path = BASE + seq + "/" + path_type + "/image_0" + cam + "/data/" + format(frame, '010') + ".png";
 
 # load calibration dictionary
 calib = load_calibration.load_calibration(calib_path);
@@ -44,7 +40,7 @@ while True:
   img = lidar_utils_obj.project_points(img, lidar_path, T_IMG_CAM, T_CAM_LIDAR, dist_coeffs, DISTORTED);
   # cv2.imwrite("test.png", img)
 
-  cv2.imshow('image',img)
+  cv2.imwrite("test.png", img)
   cv2.waitKey(1000)
 
   if MOVE_FORWARD:

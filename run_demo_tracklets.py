@@ -6,22 +6,15 @@ import cv2
 import load_calibration
 from scipy.spatial.transform import Rotation as R
 
-frame = 26
+frame = 10
 cam = '0'
-seq = '0010'
-DISTORTED = False
+seq = '0004'
 MOVE_FORWARD = False
-# BASE = "/media/matthew/WAVELAB_2TB/winter/data/"
-BASE = "/media/matthew/MOOSE-4TB/2019_02_27/"
-CALIB_BASE = "/media/matthew/WAVELAB_2TB/winter/"
-
-if DISTORTED:
-  path_type = 'raw'
-else:
-  path_type = 'processed'
+BASE = "/home/trail/workspace/cadc_devkit/data/cadcd/2019_02_27/"
+path_type = 'labeled'
 
 lidar_path = BASE + seq + "/" + path_type + "/lidar_points/data/" + format(frame, '010') + ".bin";
-calib_path = CALIB_BASE + "calib/";
+calib_path = BASE + "calib/";
 img_path = BASE + seq + "/" + path_type + "/image_0" + cam + "/data/" + format(frame, '010') + ".png";
 
 annotations_file = BASE + seq + "/3d_ann.json";
@@ -74,7 +67,7 @@ for cuboid in annotations_data[frame]['cuboids']:
   test = np.matmul(T_IMG_CAM, tmp);
   x = int(test[0][3]/test[2][3]);
   y = int(test[1][3]/test[2][3]);
-  cv2.circle(img, (x,y), radius, [0, 0, 255], thickness=2, lineType=8, shift=0);
+  # cv2.circle(img, (x,y), radius, [0, 0, 255], thickness=2, lineType=8, shift=0);
 
   front_right_bottom = np.array([[1,0,0,length/2],[0,1,0,-width/2],[0,0,1,-height/2],[0,0,0,1]]);
   front_right_top = np.array([[1,0,0,length/2],[0,1,0,-width/2],[0,0,1,height/2],[0,0,0,1]]);
@@ -179,6 +172,6 @@ for cuboid in annotations_data[frame]['cuboids']:
 
   #break;
 
-cv2.imshow('image',img)
-# cv2.imwrite("test.png", img)
+# cv2.imshow('image',img)
+cv2.imwrite("test.png", img)
 cv2.waitKey(10000)
